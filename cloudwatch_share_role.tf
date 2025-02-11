@@ -1,16 +1,16 @@
 # Cloudwatch Share role
 
 resource "aws_iam_role" "cloudwatch_share_role" {
-  count = var.create_cloudwatch_share_role ? 1 : 0
-  name                  = "CloudWatch-CrossAccountSharingRole"
-  assume_role_policy    = data.aws_iam_policy_document.cloudwatch_share_policy_document[0].json
+  count              = var.create_cloudwatch_share_role ? 1 : 0
+  name               = "CloudWatch-CrossAccountSharingRole"
+  assume_role_policy = data.aws_iam_policy_document.cloudwatch_share_policy_document[0].json
 }
 
 data "aws_iam_policy_document" "cloudwatch_share_policy_document" {
   count = var.create_cloudwatch_share_role ? 1 : 0
   statement {
     actions = ["sts:AssumeRole"]
-    effect = "Allow"
+    effect  = "Allow"
 
     principals {
       type        = "AWS"
@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "cloudwatch_share_policy_document" {
 }
 
 resource "aws_iam_role_policy_attachment" "cloudwatch_share_policy" {
-  count = var.create_cloudwatch_share_role ? 1 : 0
+  count      = var.create_cloudwatch_share_role ? 1 : 0
   role       = aws_iam_role.cloudwatch_share_role[0].name
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess"
 }

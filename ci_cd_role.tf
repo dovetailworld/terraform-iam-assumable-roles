@@ -26,5 +26,3 @@ data "aws_iam_policy_document" "ci_cd_policy_document" {
     }
   }
 }
-
-
