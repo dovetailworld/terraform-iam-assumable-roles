@@ -1,17 +1,17 @@
 #Admin
 output "admin_iam_role_arn" {
   description = "ARN of admin IAM role"
-  value       = element(concat(aws_iam_role.admin.*.arn, [""]), 0)
+  value       = try(aws_iam_role.admin[0].arn, "")
 }
 
 output "admin_iam_role_name" {
   description = "Name of admin IAM role"
-  value       = element(concat(aws_iam_role.admin.*.name, [""]), 0)
+  value       = try(aws_iam_role.admin[0].name, "")
 }
 
 output "admin_iam_role_path" {
   description = "Path of admin IAM role"
-  value       = element(concat(aws_iam_role.admin.*.path, [""]), 0)
+  value       = try(aws_iam_role.admin[0].path, "")
 }
 
 output "admin_iam_role_requires_mfa" {
@@ -22,17 +22,17 @@ output "admin_iam_role_requires_mfa" {
 # Poweruser
 output "poweruser_iam_role_arn" {
   description = "ARN of poweruser IAM role"
-  value       = element(concat(aws_iam_role.poweruser.*.arn, [""]), 0)
+  value       = try(aws_iam_role.poweruser[0].arn, "")
 }
 
 output "poweruser_iam_role_name" {
   description = "Name of poweruser IAM role"
-  value       = element(concat(aws_iam_role.poweruser.*.name, [""]), 0)
+  value       = try(aws_iam_role.poweruser[0].name, "")
 }
 
 output "poweruser_iam_role_path" {
   description = "Path of poweruser IAM role"
-  value       = element(concat(aws_iam_role.poweruser.*.path, [""]), 0)
+  value       = try(aws_iam_role.poweruser[0].path, "")
 }
 
 output "poweruser_iam_role_requires_mfa" {
@@ -43,17 +43,17 @@ output "poweruser_iam_role_requires_mfa" {
 # Readonly
 output "readonly_iam_role_arn" {
   description = "ARN of readonly IAM role"
-  value       = element(concat(aws_iam_role.readonly.*.arn, [""]), 0)
+  value       = try(aws_iam_role.readonly[0].arn, "")
 }
 
 output "readonly_iam_role_name" {
   description = "Name of readonly IAM role"
-  value       = element(concat(aws_iam_role.readonly.*.name, [""]), 0)
+  value       = try(aws_iam_role.readonly[0].name, "")
 }
 
 output "readonly_iam_role_path" {
   description = "Path of readonly IAM role"
-  value       = element(concat(aws_iam_role.readonly.*.path, [""]), 0)
+  value       = try(aws_iam_role.readonly[0].path, "")
 }
 
 output "readonly_iam_role_requires_mfa" {
@@ -63,5 +63,5 @@ output "readonly_iam_role_requires_mfa" {
 
 output "datadog_role_name" {
   description = "Datadog role name"
-  value = element(concat(aws_iam_role.datadog_iam_role.*.name, [""]), 0)
+  value       = try(aws_iam_role.datadog_iam_role[0].name, "")
 }
