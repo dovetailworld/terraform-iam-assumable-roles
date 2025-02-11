@@ -17,7 +17,7 @@ resource "aws_iam_role" "ci_cd_iam_role" {
 resource "aws_iam_role_policy_attachments_exclusive" "ci_cd_iam_role_attach" {
   count = var.create_ci_cd_role ? 1 : 0
 
-  role_name   = aws_iam_role.ci_cd_iam_role.name[0]
+  role_name   = aws_iam_role.ci_cd_iam_role[0].name
   policy_arns = var.ci_cd_role_managed_policies
 }
 
