@@ -6,7 +6,7 @@ data "aws_iam_policy_document" "ec2_check_reboot_assume_role_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = [var.trusted_user_ec2_check_reboot]
+      identifiers = ["arn:aws:iam::152144172650:user/${var.trusted_user_ec2_check_reboot}"]
     }
   }
 }
