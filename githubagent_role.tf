@@ -40,6 +40,7 @@ data "aws_iam_policy_document" "ec2_check_reboot_policy" {
       "ssm:ListCommands",
       "ssm:ListCommandInvocations",
       "ssm:DescribeInstanceInformation",
+      "ssm:StartSession"
     ]
 
     resources = [
