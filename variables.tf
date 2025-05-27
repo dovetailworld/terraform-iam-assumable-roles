@@ -198,3 +198,11 @@ variable "ci_cd_role_managed_policies" {
   description = "Managed policies list."
   type        = list(string)
 }
+
+# GitHub Agent
+
+variable "trusted_user_ec2_check_reboot" {
+  default     = ""
+  type        = string
+  description = "Provide a user that is allowed to check and reboot EC2 instances with SSM."
+}
